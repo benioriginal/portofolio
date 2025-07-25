@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beniamin Nitu - Full Stack Developer </title>
+    <title>Beniamin Nitu - Full Stack Developer</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -577,12 +577,67 @@
       }
 
       /* Mobile optimization */
-      @media (max-width: 576px) {
-        .hero h1 {
-          font-size: 2.2rem;
-        }
-        .hero p {
-          font-size: 1rem;
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .json-downloads {
+        margin-top: 40px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeUp 1s forwards 1.1s;
+      }
+
+      .json-downloads h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+        color: var(--accent);
+      }
+
+      .json-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .json-btn {
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1rem;
+        background: rgba(108, 99, 255, 0.15);
+        border: 2px solid rgba(108, 99, 255, 0.3);
+        color: var(--text);
+      }
+
+      .json-btn:hover {
+        background: rgba(108, 99, 255, 0.25);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+      }
+
+      .json-btn i {
+        color: var(--accent);
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+          .json-buttons {
+            flex-direction: column;
+          }
+
+          .json-btn {
+            width: 100%;
+            justify-content: center;
+          }
         }
       }
     </style>
@@ -621,13 +676,29 @@
             <a href="#projects" class="btn btn-primary">View Projects</a>
             <a href="#contact" class="btn btn-secondary">Contact Me</a>
           </div>
+
+          <!-- JSON Download Section -->
+          <div class="json-downloads">
+            <h3>Download Romanian Location Data</h3>
+            <div class="json-buttons">
+              <a
+                href="romanian_locations_reformatted.json"
+                download
+                class="json-btn"
+              >
+                <i class="fas fa-file-code"></i> Reformatted Locations
+              </a>
+              <a href="romanian_locations_full.json" download class="json-btn">
+                <i class="fas fa-file-code"></i> Full Location Data
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="hero-img">
         <img src="headshot.jpg" alt="Beniamin Nitu" />
       </div>
     </section>
-
     <!-- About Section -->
     <section class="about" id="about">
       <div class="container">
@@ -945,6 +1016,15 @@
     <script>
       // Smooth background transitions for projects
       document.addEventListener("DOMContentLoaded", function () {
+        const downloadButtons = document.querySelectorAll(".json-btn");
+
+        downloadButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const fileName = this.href.split("/").pop();
+            console.log(`Downloaded: ${fileName}`);
+            // Here you could add analytics tracking
+          });
+        });
         const projectCards = document.querySelectorAll(".project-card");
         // Replace existing background transition code with:
         const backgroundOverlay = document.createElement("div");
