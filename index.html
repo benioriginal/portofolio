@@ -1,1084 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Beniamin Nitu - Full Stack Developer</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beniamin Nitu - High Performance Web Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-      :root {
-        --primary: #0a0a14;
-        --secondary: #1a1a2e;
-        --accent: #6c63ff;
-        --accent-light: #837dff;
-        --text: #f0f0f0;
-        --text-secondary: #a0a0c0;
-        --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Poppins", sans-serif;
-        background: var(--primary);
-        color: var(--text);
-        overflow-x: hidden;
-        line-height: 1.6;
-      }
-
-      .background-transition {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-        transition: var(--transition);
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* Header & Navigation */
-      header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 100;
-        padding: 20px 0;
-        transition: var(--transition);
-        background: rgba(10, 10, 20, 0.8);
-        backdrop-filter: blur(10px);
-      }
-
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 800;
-        font-size: 28px;
-        color: var(--accent);
-        letter-spacing: 1px;
-      }
-
-      .logo span {
-        color: var(--text);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 30px;
-      }
-
-      .nav-links a {
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 500;
-        position: relative;
-        transition: var(--transition);
-      }
-
-      .nav-links a:after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent);
-        transition: var(--transition);
-      }
-
-      .nav-links a:hover {
-        color: var(--accent);
-      }
-
-      .nav-links a:hover:after {
-        width: 100%;
-      }
-
-      /* Hero Section */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: start;
-        padding: 100px 0 80px;
-        position: relative;
-        justify-content: space-between;
-        overflow: hidden;
-      }
-
-      .hero-content {
-        max-width: 700px;
-        z-index: 2;
-        margin: 0 0 !important;
-        position: relative;
-      }
-      .hero .container {
-        margin: 0;
-      }
-      .hero h1 {
-        font-family: "Montserrat", sans-serif;
-        font-size: clamp(2.5rem, 8vw, 4.5rem);
-        line-height: 1.1;
-        margin-bottom: 20px;
-        opacity: 0;
-        animation: fadeUp 1s forwards 0.3s;
-      }
-
-      .hero h1 span {
-        color: var(--accent);
-        position: relative;
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
-        color: var(--text-secondary);
-        max-width: 600px;
-        opacity: 0;
-        animation: fadeUp 1s forwards 0.5s;
-      }
-
-      .hero-btns {
-        display: flex;
-        gap: 15px;
-        opacity: 0;
-        animation: fadeUp 1s forwards 0.7s;
-        justify-content: center;
-      }
-
-      .btn {
-        padding: 12px 30px;
-        border-radius: 30px;
-        font-weight: 500;
-        text-decoration: none;
-        transition: var(--transition);
-        display: inline-block;
-        font-size: 1rem;
-        cursor: pointer;
-      }
-
-      .btn-primary {
-        background: var(--accent);
-        color: white;
-        border: 2px solid var(--accent);
-      }
-
-      .btn-primary:hover {
-        background: transparent;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
-      }
-
-      .btn-secondary {
-        background: transparent;
-        color: var(--text);
-        border: 2px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.05);
-        transform: translateY(-3px);
-      }
-
-      .hero-img {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 45%;
-        max-width: 500px;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        animation: fadeIn 1s forwards 0.9s;
-        border: 5px solid rgba(108, 99, 255, 0.1);
-      }
-
-      .hero-img img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      /* About Section */
-      .about {
-        padding: 100px 0;
-        background: var(--secondary);
-        position: relative;
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 60px;
-        position: relative;
-      }
-
-      .section-title h2 {
-        font-family: "Montserrat", sans-serif;
-        font-size: 2.5rem;
-        display: inline-block;
-        position: relative;
-      }
-
-      .section-title h2:after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: var(--accent);
-        border-radius: 2px;
-      }
-
-      .about-content {
-        display: flex;
-        align-items: center;
-        gap: 50px;
-      }
-
-      .about-text {
-        flex: 1;
-      }
-
-      .about-text h3 {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-        color: var(--accent);
-      }
-
-      .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin-top: 30px;
-      }
-
-      .skill {
-        background: rgba(108, 99, 255, 0.1);
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 0.9rem;
-        transition: var(--transition);
-      }
-
-      .skill:hover {
-        background: var(--accent);
-        transform: translateY(-3px);
-      }
-
-      /* Projects Section */
-      .projects {
-        padding: 100px 0;
-        position: relative;
-      }
-
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 30px;
-      }
-
-      .project-card {
-        background: rgba(30, 30, 46, 0.5);
-        border-radius: 15px;
-        overflow: hidden;
-        transition: var(--transition);
-        position: relative;
-        height: 400px;
-        transform: translateY(50px);
-        opacity: 0;
-      }
-
-      .project-card.in-view {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .project-img {
-        height: 180px;
-        overflow: hidden;
-      }
-
-      .project-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .project-card:hover .project-img img {
-        transform: scale(1.05);
-      }
-
-      .project-content {
-        padding: 25px;
-      }
-
-      .project-content h3 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-        color: var(--accent);
-      }
-
-      .project-content .tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 15px 0;
-      }
-
-      .tech span {
-        background: rgba(108, 99, 255, 0.1);
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-      }
-
-      .project-stats {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .stat {
-        text-align: center;
-      }
-
-      .stat .number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--accent);
-      }
-
-      .stat .label {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-      }
-
-      /* Contact Section */
-      .contact {
-        padding: 100px 0;
-        background: var(--secondary);
-        text-align: center;
-      }
-
-      .contact-content {
-        max-width: 700px;
-        margin: 0 auto;
-      }
-
-      .contact h2 {
-        margin-bottom: 20px;
-      }
-
-      .contact p {
-        margin-bottom: 40px;
-        color: var(--text-secondary);
-      }
-
-      .contact-info {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        margin-top: 40px;
-        flex-wrap: wrap;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        transition: var(--transition);
-      }
-
-      .contact-item:hover {
-        color: var(--accent);
-        transform: translateY(-5px);
-      }
-
-      .contact-icon {
-        width: 50px;
-        height: 50px;
-        background: rgba(108, 99, 255, 0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-      }
-
-      /* Footer */
-      footer {
-        padding: 30px 0;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-      }
-
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 20px;
-      }
-
-      .social-links a {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--transition);
-      }
-
-      .social-links a:hover {
-        background: var(--accent);
-        transform: translateY(-5px);
-      }
-
-      /* Animations */
-      @keyframes fadeUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      @media (max-width: 992px) {
-        .hero {
-          flex-direction: column;
-          align-items: center;
-          padding-top: 120px;
+        :root {
+            --bg: #050505;
+            --surface: #121212;
+            --primary: #7000ff; /* Electric Violet */
+            --secondary: #00f3ff; /* Cyan */
+            --text: #ffffff;
+            --text-dim: #888888;
+            --border: #222;
         }
 
-        .hero-img {
-          position: relative;
-          width: 70%;
-          max-width: 300px;
-          margin-top: 40px;
-          transform: none;
-          top: auto;
-          right: auto;
-        }
-      }
-
-      /* Responsive */
-      @media (max-width: 992px) {
-        .hero-img {
-          position: relative;
-          width: 100%;
-          max-width: 400px;
-          margin: 50px auto 0;
-          transform: none;
-          right: auto;
-          top: auto;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .hero {
-          padding-top: 150px;
-          text-align: center;
+        /* --- Utilities --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .flex { display: flex; align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn {
+            padding: 12px 30px;
+            border: 1px solid var(--primary);
+            color: var(--text);
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: 500;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%;
+            background: var(--primary); z-index: -1; transition: 0.3s;
+        }
+        .btn:hover::before { width: 100%; }
+
+        /* --- Header --- */
+        nav { padding: 30px 0; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: -1px; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 30px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* --- Hero --- */
+        .hero { padding: 120px 0; position: relative; }
+        .hero h1 { font-size: clamp(3rem, 8vw, 5rem); line-height: 1; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
+        
+        .stat-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+            margin-top: 80px; border-top: 1px solid var(--border); padding-top: 30px;
+        }
+        .stat-item h3 { font-size: 2.5rem; font-weight: 300; }
+        .stat-item p { color: var(--text-dim); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- Projects --- */
+        .section-title { font-size: 2rem; margin-bottom: 50px; display: flex; align-items: center; gap: 20px; }
+        .section-title::after { content: ''; height: 1px; background: var(--border); flex: 1; }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            position: relative;
+        }
+        .project-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+        .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .project-type { font-size: 0.8rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block;}
+        .project-title { font-size: 2rem; margin: 0; }
+        .tech-stack { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .tech-tag { font-size: 0.8rem; background: rgba(255,255,255,0.05); padding: 5px 10px; border: 1px solid var(--border); }
+
+        .highlight-box {
+            background: rgba(112, 0, 255, 0.05);
+            border-left: 3px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            color: #ddd;
         }
 
-        .hero-content {
-          margin: 0 auto;
+        /* --- Contact --- */
+        .contact { padding: 100px 0; text-align: center; }
+        .contact h2 { font-size: 3rem; margin-bottom: 20px; }
+        .email-link { font-size: 1.5rem; color: var(--text); text-decoration: none; border-bottom: 2px solid var(--primary); padding-bottom: 5px; }
+
+        @media(max-width: 768px) {
+            .stat-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .project-header { flex-direction: column; gap: 10px; }
         }
-
-        .hero-btns {
-          justify-content: center;
-        }
-
-        .about-content {
-          flex-direction: column;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
-        .hero-img {
-          width: 85%;
-        }
-      }
-      .unreleased-note {
-        color: #ff6b6b;
-        font-weight: 500;
-        margin-top: 10px;
-        font-size: 0.9rem;
-      }
-      .background-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: opacity 1s ease;
-        z-index: -1;
-      }
-
-      .background-transition {
-        transition: none; /* Remove previous transition */
-      } /* Add hover effect to project images */
-      .project-img img {
-        transition: transform 0.5s ease;
-      }
-
-      .project-card:hover .project-img img {
-        transform: scale(1.05);
-      }
-
-      /* Mobile optimization */
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-
-      .json-downloads {
-        margin-top: 40px;
-        text-align: center;
-        opacity: 0;
-        animation: fadeUp 1s forwards 1.1s;
-      }
-
-      .json-downloads h3 {
-        font-size: 1.3rem;
-        margin-bottom: 20px;
-        color: var(--accent);
-      }
-
-      .json-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        flex-wrap: wrap;
-      }
-
-      .json-btn {
-        padding: 12px 25px;
-        border-radius: 30px;
-        font-weight: 500;
-        text-decoration: none;
-        transition: var(--transition);
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 1rem;
-        background: rgba(108, 99, 255, 0.15);
-        border: 2px solid rgba(108, 99, 255, 0.3);
-        color: var(--text);
-      }
-
-      .json-btn:hover {
-        background: rgba(108, 99, 255, 0.25);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
-      }
-
-      .json-btn i {
-        color: var(--accent);
-
-        /* Mobile optimization */
-        @media (max-width: 768px) {
-          .json-buttons {
-            flex-direction: column;
-          }
-
-          .json-btn {
-            width: 100%;
-            justify-content: center;
-          }
-        }
-      }
     </style>
-  </head>
-  <body>
-    <!-- Background Transition Element -->
-    <div class="background-transition"></div>
+</head>
+<body>
 
-    <!-- Header -->
-    <header>
-      <div class="container">
-        <nav>
-          <div class="logo">B<span>N</span></div>
-          <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </nav>
-      </div>
+    <nav>
+        <div class="container flex justify-between">
+            <div class="logo">beniamin<span style="color:var(--primary)">.dev</span></div>
+            <div class="nav-links">
+                <a href="#projects">Work</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <p style="color: var(--secondary); font-weight: bold; margin-bottom: 10px;">// FULL STACK ARCHITECT</p>
+            <h1>Building <span class="gradient-text">Massive Scale</span><br>Applications.</h1>
+            <p>I engineer high-performance web systems that handle millions of requests with minimal overhead. Specializing in scalability, data architecture, and cost-optimization.</p>
+            
+            <a href="mailto:nitu@beniamin.dev" class="btn">Let's build something big</a>
+
+            <div class="stat-grid">
+                <div class="stat-item">
+                    <h3>48k+</h3>
+                    <p>Database Records Managed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2k+</h3>
+                    <p>Concurrent Users</p>
+                </div>
+                <div class="stat-item">
+                    <h3>$0</h3>
+                    <p>Optimized Hosting Cost</p>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <h1>Full Stack Developer & <span>Scalability Expert</span></h1>
-          <p>
-            I build high-performance web applications that handle massive
-            traffic at minimal costs. Specializing in React, Firebase, and
-            Python to deliver scalable solutions with near-zero hosting
-            expenses.
-          </p>
-          <div class="hero-btns">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-secondary">Contact Me</a>
-          </div>
+    <section id="projects" style="padding: 50px 0;">
+        <div class="container">
+            <h2 class="section-title">Selected Works</h2>
 
-          <!-- JSON Download Section -->
-          <div class="json-downloads">
-            <h3>Download Romanian Location Data</h3>
-            <div class="json-buttons">
-              <a
-                href="romanian_locations_reformatted.json"
-                download
-                class="json-btn"
-              >
-                <i class="fas fa-file-code"></i> Reformatted Locations
-              </a>
-              <a href="romanian_locations_full.json" download class="json-btn">
-                <i class="fas fa-file-code"></i> Full Location Data
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-img">
-        <img src="headshot.jpg" alt="Beniamin Nitu" />
-      </div>
-    </section>
-    <!-- About Section -->
-    <section class="about" id="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>About Me</h2>
-        </div>
-        <div class="about-content">
-          <div class="about-text">
-            <h3>Turning Constraints into Scalable Solutions</h3>
-            <p>
-              I'm a full-stack developer from Romania with a passion for
-              building high-performance applications that scale efficiently. My
-              specialty is creating solutions that handle massive traffic while
-              minimizing hosting costs - often to just $0 per month.
-            </p>
-            <p>
-              With expertise in React, Tailwind, Firebase, MongoDB, and Python,
-              I've delivered projects that serve millions of pages to thousands
-              of concurrent users without breaking the bank. I obsess over
-              optimization, security, and cost-effective architectures.
-            </p>
-            <p>
-              When I'm not coding, you'll find me exploring new technologies,
-              contributing to open-source projects, or sharing knowledge with
-              the developer community.
-            </p>
+            <div class="project-card">
+                <span class="project-type">High Traffic Architecture • Database Engineering</span>
+                <div class="project-header">
+                    <h3 class="project-title">Project "Mangacat" (Architecture Study)</h3>
+                    <i class="fa fa-server" style="font-size: 1.5rem; color: var(--text-dim);"></i>
+                </div>
+                <p style="color: #aaa; margin-bottom: 15px;">
+                    A massive content delivery platform engineered to test the limits of modern web frameworks and database optimization. The system was designed to handle automated content aggregation and serving for thousands of daily users.
+                </p>
+                
+                <div class="highlight-box">
+                    <strong>Challenge:</strong> Managing 48,000+ series entities with over 1.2 million individual chapters/files while keeping latency under 200ms.
+                    <br><br>
+                    <strong>Solution:</strong> Built a custom Python scraper for automated data ingestion paired with a Firebase/NoSQL architecture optimized for read-heavy operations. Implemented a custom caching layer to serve 2,000+ active members with $0 infrastructure cost.
+                </div>
 
-            <div class="skills">
-              <div class="skill">React</div>
-              <div class="skill">Tailwind CSS</div>
-              <div class="skill">Firebase</div>
-              <div class="skill">MongoDB</div>
-              <div class="skill">Python</div>
-              <div class="skill">Web Scraping</div>
-              <div class="skill">Payment Processing</div>
-              <div class="skill">Scalability</div>
-              <div class="skill">Cost Optimization</div>
-              <div class="skill">Cloud Architecture</div>
+                <div class="tech-stack">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Python Scripting</span>
+                    <span class="tech-tag">Firebase NoSQL</span>
+                    <span class="tech-tag">Automated Scraping</span>
+                    <span class="tech-tag">Auth Systems</span>
+                </div>
             </div>
-          </div>
+
+            <div class="project-card">
+                <span class="project-type">SaaS • Food Delivery</span>
+                <div class="project-header">
+                    <h3 class="project-title">Ofibun.com</h3>
+                    <a href="#" style="color: var(--text);"><i class="fa fa-external-link-alt"></i></a>
+                </div>
+                <p style="color: #aaa;">
+                    A B2B food ordering platform designed for corporate environments. Features a complex ordering matrix, allowing companies to manage employee allowances, group orders, and automated invoicing.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Stripe Integration</span>
+                    <span class="tech-tag">Real-time DB</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-type">Community Platform</span>
+                <div class="project-header">
+                    <h3 class="project-title">SocialCusens</h3>
+                    <i class="fa fa-users" style="font-size: 1.5rem; color: var(--text-dim);"></i>
+                </div>
+                <p style="color: #aaa;">
+                    A resource distribution platform connecting community needs with available aid. Focused on accessibility and extremely low-bandwidth usage for accessibility on older devices.
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Full Stack</span>
+                    <span class="tech-tag">Optimization</span>
+                    <span class="tech-tag">UI/UX</span>
+                </div>
+            </div>
+
         </div>
-      </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-      <div class="container">
-        <div class="section-title">
-          <h2>Featured Projects</h2>
+    <section id="contact" class="contact">
+        <div class="container">
+            <p style="color: var(--secondary); margin-bottom: 20px;">READY TO SCALE?</p>
+            <h2>Let's discuss your architecture.</h2>
+            <a href="mailto:nitu@beniamin.dev" class="email-link">nitu@beniamin.dev</a>
+            <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px; font-size: 1.5rem;">
+                <a href="https://github.com/benioriginal" style="color: var(--text-dim); transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/+40746499232" style="color: var(--text-dim); transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div
-            class="project-card"
-            data-bg="linear-gradient(135deg, #0f0c29, #302b63)"
-          >
-            <div
-              class="project-img"
-              style="background: linear-gradient(45deg, #6a11cb, #2575fc)"
-            >
-              <div
-                style="
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 2rem;
-                  font-weight: bold;
-                "
-              >
-                MANGACAT.TO
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>Mangacat.to</h3>
-              <p>
-                Full-stack manga reader supporting hundreds of thousands of
-                mangas and millions of chapters with billions of pages.
-              </p>
-              <div class="tech">
-                <span>React</span>
-                <span>Firebase</span>
-                <span>Python</span>
-                <span>Scraping</span>
-              </div>
-              <div class="project-stats">
-                <div class="stat">
-                  <div class="number">48,500+</div>
-                  <div class="label">Mangas</div>
-                </div>
-                <div class="stat">
-                  <div class="number">1,000+</div>
-                  <div class="label">Concurrent Users</div>
-                </div>
-                <div class="stat">
-                  <div class="number">$8/mo</div>
-                  <div class="label">Hosting Cost</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div
-            class="project-card"
-            data-bg="linear-gradient(135deg, #1D2B64, #F8CDDA)"
-          >
-            <div
-              class="project-img"
-              style="background: linear-gradient(45deg, #1d2b64, #f8cdda)"
-            >
-              <div
-                style="
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 2rem;
-                  font-weight: bold;
-                "
-              >
-                SOCIALCUSENS
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>SocialCusens.com</h3>
-              <p>
-                Social assistance platform providing community support and
-                resources with zero hosting costs.
-              </p>
-              <div class="tech">
-                <span>React</span>
-                <span>Firebase</span>
-                <span>Tailwind</span>
-                <span>MongoDB</span>
-              </div>
-              <div class="project-stats">
-                <div class="stat">
-                  <div class="number">$0</div>
-                  <div class="label">Monthly Cost</div>
-                </div>
-                <div class="stat">
-                  <div class="number">$40</div>
-                  <div class="label">Development</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div
-            class="project-card"
-            data-bg="linear-gradient(135deg, #3a7bd5, #00d2ff)"
-          >
-            <div
-              class="project-img"
-              style="background: linear-gradient(45deg, #3a7bd5, #00d2ff)"
-            >
-              <div
-                style="
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 2rem;
-                  font-weight: bold;
-                "
-              >
-                OFIBUN
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>Ofibun.com</h3>
-              <p>
-                Food ordering platform for local businesses with a complete
-                ordering system and admin dashboard.
-              </p>
-              <div class="tech">
-                <span>React</span>
-                <span>Firebase</span>
-                <span>Payment</span>
-                <span>Tailwind</span>
-              </div>
-              <div class="project-stats">
-                <div class="stat">
-                  <div class="number">$0</div>
-                  <div class="label">Monthly Cost</div>
-                </div>
-                <div class="stat">
-                  <div class="number">$80</div>
-                  <div class="label">Development</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4 -->
-          <div
-            class="project-card"
-            data-bg="linear-gradient(135deg, #834d9b, #d04ed6)"
-          >
-            <div
-              class="project-img"
-              style="background: linear-gradient(45deg, #834d9b, #d04ed6)"
-            >
-              <div
-                style="
-                  height: 100%;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  color: white;
-                  font-size: 2rem;
-                  font-weight: bold;
-                "
-              >
-                SERELECLARHAD
-              </div>
-            </div>
-            <div class="project-content">
-              <h3>SereleClarhad.ro</h3>
-              <p>
-                E-commerce platform for flowers with Amazon-like functionality
-                including payments, inventory, and shipping.
-              </p>
-              <div class="tech">
-                <span>React</span>
-                <span>Firebase</span>
-                <span>E-commerce</span>
-                <span>MongoDB</span>
-              </div>
-              <div class="project-stats">
-                <div class="stat">
-                  <div class="number">$0</div>
-                  <div class="label">Monthly Cost</div>
-                </div>
-                <div class="stat">
-                  <div class="number">$250</div>
-                  <div class="label">Development</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div class="container">
-        <div class="contact-content">
-          <div class="section-title">
-            <h2>Get In Touch</h2>
-          </div>
-          <p>
-            Have a project in mind? Need a scalable solution with minimal
-            hosting costs? Let's talk about how I can help bring your vision to
-            life.
-          </p>
-          <div class="hero-btns">
-            <a href="mailto:nitu@beniamin.dev" class="btn btn-primary"
-              >Email Me</a
-            >
-            <a
-              href="https://wa.me/+40746499232"
-              class="btn btn-secondary"
-              target="_blank"
-              >WhatsApp</a
-            >
-          </div>
-
-          <div class="contact-info">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div>
-                <h4>Email</h4>
-                <p>nitu@beniamin.dev</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fab fa-whatsapp"></i>
-              </div>
-              <div>
-                <h4>WhatsApp</h4>
-                <p>+40746499232</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="social-links">
-          <a
-            href="https://github.com/benioriginal?tab=repositories&q=&type=&language=&sort=stargazers"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="https://www.linkedin.com/in/beniamin-andrei-nitu-b53933374/"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
-        </div>
-        <p>&copy; 2025 Beniamin Nitu. All rights reserved.</p>
-      </div>
-    </footer>
-
-    <script>
-      // Smooth background transitions for projects
-      document.addEventListener("DOMContentLoaded", function () {
-        const downloadButtons = document.querySelectorAll(".json-btn");
-
-        downloadButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            const fileName = this.href.split("/").pop();
-            console.log(`Downloaded: ${fileName}`);
-            // Here you could add analytics tracking
-          });
-        });
-        const projectCards = document.querySelectorAll(".project-card");
-        // Replace existing background transition code with:
-        const backgroundOverlay = document.createElement("div");
-        backgroundOverlay.className = "background-overlay";
-        document
-          .querySelector(".background-transition")
-          .appendChild(backgroundOverlay);
-
-        projectCards.forEach((card) => {
-          card.addEventListener("mouseenter", () => {
-            const bg = card.getAttribute("data-bg");
-            backgroundOverlay.style.background = bg;
-            backgroundOverlay.style.opacity = 1;
-          });
-
-          card.addEventListener("mouseleave", () => {
-            backgroundOverlay.style.opacity = 0;
-          });
-        });
-
-        // Intersection Observer for project animations
-        const observerOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.1,
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-            }
-          });
-        }, observerOptions);
-
-        document.querySelectorAll(".project-card").forEach((card) => {
-          observer.observe(card);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-          anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-              window.scrollTo({
-                top: target.offsetTop - 80,
-                behavior: "smooth",
-              });
-            }
-          });
-        });
-      });
-    </script>
-  </body>
+</body>
 </html>
