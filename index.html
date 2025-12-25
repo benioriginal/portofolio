@@ -23,7 +23,11 @@
             --gray: #888;
             --transition: cubic-bezier(0.4, 0, 0.2, 1);
         }
-
+        button, 
+        a, 
+        input {
+            -webkit-tap-highlight-color: transparent;
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -378,7 +382,11 @@
             border-color: var(--accent);
             box-shadow: 0 5px 20px rgba(112, 0, 255, 0.3);
         }
-
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* Extra fallback for older versions */
+    outline: none; /* Removes the focus ring on some browsers */
+}
         /* LIGHTBOX */
         .lightbox {
             position: fixed;
@@ -443,6 +451,7 @@
             padding: 20px;
             transition: color 0.3s, transform 0.3s;
             user-select: none;
+            z-index: 999999;
         }
 
         .lightbox-nav:hover {
