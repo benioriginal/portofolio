@@ -1041,6 +1041,7 @@ $$('.wh').forEach(h=>h.addEventListener('dblclick',e=>{
 /* ═══════════════════════ DESKTOP ICONS ═══════════════════════ */
 let selIcon=null;
 $$('.dicon').forEach(icon=>{
+    // Mouse: single click selects, double click opens
     icon.addEventListener('click',e=>{
         $$('.dicon').forEach(i=>i.classList.remove('sel'));icon.classList.add('sel');selIcon=icon;
     });
@@ -1048,6 +1049,21 @@ $$('.dicon').forEach(icon=>{
         const w=icon.dataset.win,u=icon.dataset.url;
         if(w)openWin(w);
         if(u)window.open(u,'_blank');
+    });
+    // Touch: single tap selects, double tap opens
+    let lastTap=0;
+    icon.addEventListener('touchend',e=>{
+        e.preventDefault();
+        const now=Date.now();
+        if(now-lastTap<350){
+            // double tap
+            const w=icon.dataset.win,u=icon.dataset.url;
+            if(w)openWin(w);
+            if(u)window.open(u,'_blank');
+        } else {
+            $$('.dicon').forEach(i=>i.classList.remove('sel'));icon.classList.add('sel');selIcon=icon;
+        }
+        lastTap=now;
     });
 });
 document.getElementById('dArea').addEventListener('click',e=>{
