@@ -253,6 +253,27 @@ img{max-width:100%;height:auto}
 .liframe i{font-size:1.8rem;opacity:.5;transition:opacity var(--fast)}
 .liframe:hover i{opacity:1}
 .liframe small{font-size:.7rem;opacity:.5}
+
+/* lazy video cards */
+.video-group{margin:12px 0}
+.video-group h5{font-size:.78rem;color:var(--text3);font-weight:500;margin-bottom:6px;font-family:var(--mono)}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:6px 0}
+.lvideo{
+    position:relative;height:110px;border:1px dashed var(--border);border-radius:6px;
+    background:var(--surface);display:flex;flex-direction:column;align-items:center;
+    justify-content:center;color:var(--text2);cursor:pointer;transition:all var(--fast);
+    gap:6px;font-size:.78rem;overflow:hidden;
+}
+.lvideo:hover{border-color:var(--accent);border-style:solid;color:var(--accent)}
+.lvideo i{font-size:1.6rem;opacity:.5;transition:opacity var(--fast)}
+.lvideo:hover i{opacity:1}
+.lvideo small{font-size:.65rem;opacity:.5}
+.lvideo-wrap{border-radius:6px;overflow:hidden;border:1px solid var(--border);margin:0;position:relative}
+.lvideo-wrap video{width:100%;display:block;border-radius:5px}
+.lvideo-wrap .vfull{position:absolute;top:6px;right:6px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.6);border:none;border-radius:4px;color:#fff;font-size:.75rem;cursor:pointer;opacity:0;transition:opacity var(--fast);z-index:2}
+.lvideo-wrap:hover .vfull{opacity:1}
+.lvideo-wrap .vfull:hover{background:rgba(0,0,0,.85)}
+
 .ifw{margin:10px 0;border-radius:8px;overflow:hidden;background:var(--surface);border:1px solid var(--border)}
 .if-bar{display:flex;align-items:center;padding:8px 12px;background:#0a0a0a;border-bottom:1px solid var(--border);gap:8px}
 .if-dots{display:flex;gap:5px}
@@ -498,6 +519,12 @@ exploit dev. owner of <span class="hl">Zovo Ecosystem SRL</span>.
         <p>since flowriann was making a minecraft server, i made my own competing one. discord got 1000 members overnight and players flooded in.</p>
         <blockquote>had a friend shulker but i lost contact with him</blockquote>
     </div>
+    <div class="pc">
+        <h4>WhatsApp Bots</h4>
+        <div class="ptags"><span class="tag">Python</span><span class="tag">AI</span><span class="tag">Automation</span></div>
+        <p>made a bunch of whatsapp bots i could talk to and give commands — /ban, /mute, /imagine, bots that would control my PC remotely. generative AI was very early back then, few people were even aware of it.</p>
+        <blockquote>i still have a cracked GPT 3.5 fine-tuned model that's completely unrestrictive. just goes to show how early and how deep into this stuff i was at 13-14.</blockquote>
+    </div>
 </div>
 
 <!-- ERA: Age 14 -->
@@ -538,6 +565,7 @@ exploit dev. owner of <span class="hl">Zovo Ecosystem SRL</span>.
         <h4>Samsung S24 Ultra Website</h4>
         <div class="ptags"><span class="tag">🥈 2nd Place</span><span class="tag">National Competition</span></div>
         <p>built a promotional website for samsung's flagship phone for a national competition. got 2nd place.</p>
+        <p style="font-size:.8rem;color:var(--text3)">*site no longer loads correctly — some assets were removed over time</p>
         <div class="plinks">
             <a href="https://github.com/benioriginal/Samsung-Galaxy-S24-Ultra" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             <a href="https://benioriginal.github.io/Samsung-Galaxy-S24-Ultra/" target="_blank"><i class="fas fa-external-link-alt"></i> Visit</a>
@@ -614,8 +642,45 @@ exploit dev. owner of <span class="hl">Zovo Ecosystem SRL</span>.
     </div>
     <div class="pc">
         <h4>RPG Demo</h4>
-        <div class="ptags"><span class="tag">PvE</span><span class="tag">Limb cutting</span><span class="tag">Abandoned</span></div>
-        <p>started building an rpg with dismemberment system. lost interest and moved on.</p>
+        <div class="ptags"><span class="tag">PvE</span><span class="tag">Custom IK</span><span class="tag">Dismemberment</span><span class="tag">Finishers</span><span class="tag">On Hold</span></div>
+        <p>built a full rpg demo with custom foot IK, a dismemberment system, and finisher animations. legs and feet dynamically adapt to terrain — slopes, uneven ground, stairs. the dismemberment system lets you sever forearms, arms, then heads off enemies (or yourself). severed limbs fall to the ground with physics and can be stepped on. finishers chain into the dismember system for satisfying combat flow.</p>
+        <blockquote>i really love this project. since games are just a hobby for me i lost interest, but i'll definitely revisit it — probably from the ground up with the knowledge i have today.</blockquote>
+
+        <p style="color:var(--accent);font-weight:600;margin-top:8px">Foot IK — legs adapt to terrain</p>
+        <div class="gallery">
+            <img src="IK1.png" alt="Foot IK 1" data-gallery="rpg-ik" loading="lazy">
+            <img src="IK2.png" alt="Foot IK 2" data-gallery="rpg-ik" loading="lazy">
+            <img src="IK3.png" alt="Foot IK 3" data-gallery="rpg-ik" loading="lazy">
+            <img src="IK4.png" alt="Foot IK 4" data-gallery="rpg-ik" loading="lazy">
+        </div>
+
+        <p style="color:var(--accent);font-weight:600;margin-top:8px">Dismemberment — forearm, arm, head</p>
+        <div class="gallery">
+            <img src="DIS1.png" alt="Dismemberment 1" data-gallery="rpg-dis" loading="lazy">
+            <img src="dis2.png" alt="Dismemberment 2" data-gallery="rpg-dis" loading="lazy">
+            <img src="DIS3.png" alt="Dismemberment 3" data-gallery="rpg-dis" loading="lazy">
+        </div>
+
+        <p style="color:var(--accent);font-weight:600;margin-top:8px">Finishers</p>
+        <div class="gallery">
+            <img src="finish1.png" alt="Finisher 1" data-gallery="rpg-finish" loading="lazy">
+            <img src="finish2.png" alt="Finisher 2" data-gallery="rpg-finish" loading="lazy">
+        </div>
+
+        <p style="color:var(--accent);font-weight:600;margin-top:8px">Dismemberment Showcase</p>
+        <div class="video-grid">
+            <div class="lvideo" data-video="dismembershowcase.mp4"><i class="fas fa-play-circle"></i><span>Full Showcase</span><small>click to play</small></div>
+        </div>
+    </div>
+    <div class="pc">
+        <h4>Games for Friends</h4>
+        <div class="ptags"><span class="tag">Three.js</span><span class="tag">Firebase</span><span class="tag">For Fun</span><span class="pmeta"> · 5+ games</span></div>
+        <p>made a bunch of random games just to play with friends. most are still up but not really meant for public use. made at least 5+ of these, some i can't even remember anymore.</p>
+        <div class="liframe" data-src="https://cardsaganistcostache.web.app/"><i class="fas fa-gamepad"></i><span>Cards Against Costache</span><small>cardsaganistcostache.web.app</small></div>
+        <p style="font-size:.82rem;color:var(--text2)">literally cards against humanity but with our inside jokes. some of them are pretty dark ngl.</p>
+        <div class="liframe" data-src="https://watchtogetherchristi.web.app/"><i class="fas fa-gamepad"></i><span>Survive in Pielesti (v7.1)</span><small>watchtogetherchristi.web.app</small></div>
+        <p style="font-size:.82rem;color:var(--text2)">started as a watch-together app (like discord screen share), then i kept reusing the domain — went through multiple games. the current version (v7.1) is "Survive in Pielesti" — an AI chatbot decides your fate, exactly like the robot game from discord but on the web so we don't have to be in discord. uses three.js for visuals.</p>
+        <blockquote>i made so many of these throwaway games that i lost access to some of them. random domains, forgotten firebase projects, the usual.</blockquote>
     </div>
 </div>
 
@@ -702,6 +767,43 @@ exploit dev. owner of <span class="hl">Zovo Ecosystem SRL</span>.
             <img src="gamejam1 (1).png" alt="Pull The Plug 2" data-gallery="pulltheplug" loading="lazy">
         </div>
         <div class="plinks"><a href="https://beniamindev.itch.io/pull-the-plug" target="_blank"><i class="fas fa-gamepad"></i> Play on itch.io</a></div>
+        <p style="color:var(--accent);font-weight:600;margin-top:12px">ASUS ROG Event</p>
+        <div class="gallery">
+            <img src="rogme1.jpg" alt="Me at ASUS ROG event" data-gallery="rog-event" loading="lazy">
+            <img src="rogme2.jpg" alt="Me at ASUS ROG event" data-gallery="rog-event" loading="lazy">
+            <img src="rog5us.jpg" alt="Top 5 winners" data-gallery="rog-event" loading="lazy">
+        </div>
+    </div>
+    <div class="pc">
+        <h4>Zovo — Food Delivery App</h4>
+        <div class="ptags"><span class="tag">Startup</span><span class="tag">Zovo Ecosystem SRL</span></div>
+        <p>a food delivery app similar to glovo and bolt food, built under my own company. can't share more details yet.</p>
+    </div>
+    <div class="pc">
+        <h4>Content Warning Mod</h4>
+        <div class="ptags"><span class="tag">C#</span><span class="tag">Game Modding</span><span class="tag">Last Week</span></div>
+        <p>made a mod for Content Warning that tracks where i walked by creating points in 3D space so i can retrace my steps and not get lost. the best part: these trail points are completely invisible to the in-game camera recorder.</p>
+        <p>hijacked the in-game camera system and can overlay anything — static effects, subtitles, no-signal effects. these are seen by all players including non-modded ones, even the player on PS5 sees them on the recording. also added a feature to extract recorded videos and save to desktop, since sometimes we die or the game bugs out and we can't retrieve the camera.</p>
+        <div class="gallery">
+            <img src="trail1.png" alt="Trail tracking 1" data-gallery="cw-mod" loading="lazy">
+            <img src="trail2.png" alt="Trail tracking 2" data-gallery="cw-mod" loading="lazy">
+            <img src="effecttest1.png" alt="Camera effect 1" data-gallery="cw-mod" loading="lazy">
+            <img src="effecttest2.png" alt="Camera effect 2" data-gallery="cw-mod" loading="lazy">
+        </div>
+    </div>
+    <div class="pc">
+        <h4>🔒 Secret Horror Multiplayer Game</h4>
+        <div class="ptags"><span class="tag">In Development</span><span class="tag">Multiplayer</span><span class="tag">Horror</span></div>
+        <p>a horror game where the player doesn't know it's multiplayer — other players (me and my friends) can secretly join and play as monsters to scare them. randomly generated 5km×5km forest with trees, trails, a car with a firewatch tower, and items the player has to collect to repair the car by completing various tasks.</p>
+        <img src="randomgeneratemap1.png" alt="Randomly generated map" loading="lazy">
+        <p style="font-size:.82rem;color:var(--text2)">very early development — just started, but coming along well.</p>
+    </div>
+    <div class="pc">
+        <h4>Drawing</h4>
+        <p>i also know how to draw — sketching mostly. don't do it that much anymore because i struggle with color theory, so even if the sketch is great the shading and coloring usually falls flat. not featuring any drawings here for an undisclosed reason.</p>
+    </div>
+    <div class="pc">
+        <p style="color:var(--text2);font-style:italic;font-size:.85rem">well versed in both low-level and high-level languages. now rediscovering my love for game development. i've built so much random stuff over the years that i've genuinely lost track of some of it — forgotten firebase projects, dead domains, wiped repos. the list above is just what i can still remember and prove.</p>
     </div>
 </div>
 
@@ -1145,6 +1247,22 @@ document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;i
 let touchX=0;
 lb.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX},{passive:true});
 lb.addEventListener('touchend',e=>{const d=touchX-e.changedTouches[0].screenX;if(Math.abs(d)>50)navLb(d>0?1:-1)},{passive:true});
+
+/* ═══════════════════════ LAZY VIDEOS ═══════════════════════ */
+$$('.lvideo').forEach(el=>{
+    el.addEventListener('click',()=>{
+        const src=el.dataset.video;
+        const w=document.createElement('div');w.className='lvideo-wrap';
+        const v=document.createElement('video');
+        v.controls=true;v.autoplay=true;v.preload='auto';v.playsInline=true;
+        v.src=src;
+        const fb=document.createElement('button');fb.className='vfull';fb.title='Fullscreen';fb.innerHTML='<i class="fas fa-expand"></i>';
+        fb.addEventListener('click',e=>{e.stopPropagation();if(v.requestFullscreen)v.requestFullscreen();else if(v.webkitEnterFullscreen)v.webkitEnterFullscreen()});
+        v.addEventListener('dblclick',()=>{if(v.requestFullscreen)v.requestFullscreen();else if(v.webkitEnterFullscreen)v.webkitEnterFullscreen()});
+        w.appendChild(v);w.appendChild(fb);
+        el.replaceWith(w);
+    });
+});
 
 /* ═══════════════════════ LAZY IFRAMES ═══════════════════════ */
 $$('.liframe').forEach(el=>{
